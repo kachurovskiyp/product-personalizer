@@ -36,13 +36,12 @@ const Product = props => {
     console.log('Summary');
     console.log('=========================');
     console.log('Name: ', props.title);
-    console.log('Price: ', getPrice());
+    console.log('Price: ', price);
     console.log('Size: ', currentSize.name);
     console.log('Color: ', currentColor);
   };
 
-  const getPrice = useMemo(() => parseInt(props.basePrice) + parseInt(currentSize.additionalPrice), [props.basePrice, currentSize.additionalPrice]);
-
+  const price = useMemo(() => parseInt(props.basePrice) + parseInt(currentSize.additionalPrice), [props.basePrice, currentSize.additionalPrice]);
 
   return (
     <article className={styles.product}>
@@ -50,7 +49,7 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {getPrice}$</span>
+          <span className={styles.price}>Price: {price}$</span>
         </header>
 
         <ProductOptions
